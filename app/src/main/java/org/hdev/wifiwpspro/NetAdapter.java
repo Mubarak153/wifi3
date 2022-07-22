@@ -26,7 +26,7 @@ public class NetAdapter extends ArrayAdapter {
 
     @SuppressLint({"ViewHolder", "SetTextI18n"})
     public View getView(int position, View convertView, ViewGroup parent) {
-        View item = context.getLayoutInflater().inflate(R.layout.card_row, null);
+        View item = context.getLayoutInflater().inflate(R.layout.network_info, null);
         ImageView wifiSignal = item.findViewById(R.id.iconSignal);
         TextView bssid = item.findViewById(R.id.BSSID_ID);
         TextView lblESSID = item.findViewById(R.id.ESSID_ID);

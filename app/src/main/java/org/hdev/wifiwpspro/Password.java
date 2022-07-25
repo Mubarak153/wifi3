@@ -2,11 +2,11 @@ package org.hdev.wifiwpspro;
 
 
 
-public class MotdePasse {
+public class Password {
     private final String nom_reseau;
     private final String mo_depasse_net;
 
-    public MotdePasse(String nom_reseau, String mo_depasse_net) {
+    public Password(String nom_reseau, String mo_depasse_net) {
         this.nom_reseau = nom_reseau;
         this.mo_depasse_net = mo_depasse_net;
     }

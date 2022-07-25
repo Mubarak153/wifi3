@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-        setContentView(R.layout.activity_main_nouveu);
+        setContentView(R.layout.home_page2);
         settoolbar();
         loadAds();
         loadInterstitialAd();
@@ -396,7 +396,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_principale, menu);
+        getMenuInflater().inflate(R.menu.menu_one, menu);
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
@@ -436,7 +436,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAbout() {
-        startActivity(new Intent(this, AboutActivity.class));
+        startActivity(new Intent(this, Map.class));
     }
 
     private void showNetworkOptionsDialog(Networking networking) {
@@ -447,7 +447,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Array List Values", String.valueOf(charSeq));
         final String BSSID = selectedBSSID;
         if (VERSION.SDK_INT >= 21) {
-            View checkBoxView = View.inflate(this, R.layout.root_case_cocher, null);
+            View checkBoxView = View.inflate(this, R.layout.root_checker, null);
             final CheckBox checkBox = checkBoxView.findViewById(R.id.caseaCocher);
             checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

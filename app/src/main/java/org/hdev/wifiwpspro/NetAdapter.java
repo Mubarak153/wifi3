@@ -19,7 +19,7 @@ public class NetAdapter extends ArrayAdapter {
     ArrayList<Networking> networkingList;
 
     public NetAdapter(Activity context, ArrayList<Networking> networkingList) {
-        super(context, R.layout.listitem_tit, networkingList);
+        super(context, R.layout.list, networkingList);
         this.context = context;
         this.networkingList = networkingList;
     }

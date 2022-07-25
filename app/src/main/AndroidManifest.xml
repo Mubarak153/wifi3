@@ -25,10 +25,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.hdev.wifiwpspro.MotdePasseActivity"
+            android:name="org.hdev.wifiwpspro.Password_3"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="org.hdev.wifiwpspro.AboutActivity"
+            android:name="org.hdev.wifiwpspro.Map"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="org.hdev.wifiwpspro.Generator" />
     </application>

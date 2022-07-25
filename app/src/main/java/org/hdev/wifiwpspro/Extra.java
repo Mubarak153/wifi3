@@ -338,7 +338,7 @@ public class Extra {
         return context.getFileStreamPath(name).getAbsolutePath();
     }
 
-    protected static boolean doBackup(String fileName, ArrayList<MotdePasse> pwdList, String SSID, String PASS) {
+    protected static boolean doBackup(String fileName, ArrayList<Password> pwdList, String SSID, String PASS) {
         FileOutputStream file = null;
         try {
             file = new FileOutputStream(Environment.getExternalStorageDirectory().getPath() + "/" + fileName);
@@ -351,7 +351,7 @@ public class Extra {
         PrintWriter out = new PrintWriter(file);
         Iterator it = pwdList.iterator();
         while (it.hasNext()) {
-            MotdePasse pwd = (MotdePasse) it.next();
+            Password pwd = (Password) it.next();
             out.println(SSID + " " + pwd.getNom_reseau());
             out.println(PASS + " " + pwd.getMo_depasse_net());
             out.println("---------------------------------------");

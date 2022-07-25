@@ -29,7 +29,7 @@ public class Generator extends AppCompatActivity implements AdapterView.OnItemSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generator);
+        setContentView(R.layout.pin_generator);
         mac_adress = findViewById(R.id.editeur_text);
         button = findViewById(R.id.btn);
         textView = findViewById(R.id.textView2);

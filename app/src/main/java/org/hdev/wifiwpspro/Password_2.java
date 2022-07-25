@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MotdePasseAdapter extends ArrayAdapter {
+public class Password_2 extends ArrayAdapter {
     Activity context;
-    ArrayList<MotdePasse> pwdList;
+    ArrayList<Password> pwdList;
     Typeface typeface;
 
-    public MotdePasseAdapter(Activity context, ArrayList<MotdePasse> pwdList) {
-        super(context, R.layout.listitem_tit, pwdList);
+    public Password_2(Activity context, ArrayList<Password> pwdList) {
+        super(context, R.layout.list, pwdList);
         this.context = context;
         this.pwdList = pwdList;
         this.typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto.otf");
@@ -24,7 +24,7 @@ public class MotdePasseAdapter extends ArrayAdapter {
 
     @SuppressLint("ViewHolder")
     public View getView(int position, View convertView, ViewGroup parent) {
-        View item = context.getLayoutInflater().inflate(R.layout.listitem_mot_de_passe, null);
+        View item = context.getLayoutInflater().inflate(R.layout.password_list, null);
         ((TextView) item.findViewById(R.id.NetworkName)).setText(( pwdList.get(position)).getNom_reseau());
         TextView lblPWD = item.findViewById(R.id.LblNetworkPassword);
         lblPWD.setTypeface(typeface);

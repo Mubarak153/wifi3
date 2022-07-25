@@ -44,7 +44,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MotdePasseActivity extends AppCompatActivity {
+public class Password_3 extends AppCompatActivity {
 
 
     protected void onCreate(Bundle savedInstanceState) {

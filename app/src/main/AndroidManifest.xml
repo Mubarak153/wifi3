@@ -11,7 +11,9 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>    <application
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,10 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="org.hdev.wifiwpspro.Password_3"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
+    <activity
             android:name="org.hdev.wifiwpspro.Map"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="org.hdev.wifiwpspro.Generator" />

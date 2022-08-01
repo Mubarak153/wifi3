@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Lukas/StudioProjects/wifi2/app/src/main/res/layout/network_info2.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/Lukas/StudioProjects/wifi2/app/src/main/res/layout/password.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/Lukas/StudioProjects/wifi2/app/src/main/res/layout/scanning_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/wifi2/app/src/main/res/layout/activity_main_scanning.xml" value="0.14673913043478262" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/wifi2/app/src/main/res/layout/content_act.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/wifi2/app/src/main/res/layout/content_mot_de_passe.xml" value="0.18541666666666667" />

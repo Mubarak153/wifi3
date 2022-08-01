@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name" translatable="false">WIFI WPS Pro</string>
+    <string name="app_name" >Android WIFI/GPS</string>
     <string name="aboutMsg">No networks available</string>
     <string name="about_description">"This Tool Help You Connect To any Network that have wps enabled with pin. It's Only For testing your own network only. App developed with educational purposes. We're not responsible for any misuse.</string>
     <string name="action_about">About us</string>
-    <string name="action_backupPass" translatable="false">Backup</string>
+    <string name="action_backupPass" >Backup</string>
     <string name="action_infoPass" translatable="false">Information</string>
     <string name="action_scan" translatable="false">Scan</string>
     <string name="action_scanAuto" translatable="false">Automatic</string>
@@ -39,28 +39,26 @@ BUT, if you not used the correct pin, try:
 "<b>3.</b>" Maybe AP has MAC filter.
 "<b>4.</b>" Maybe the router has a timeout, try again later.
 </string>
-    <string name="info_gps" translatable="false">"Location permission is only required on Android Marshmallow or upper (6.0+).
-
-So, you can denied this permission if you want, it's not required in your Android version."</string>
-    <string name="invalidPIN" translatable="false">Invalid PIN</string>
-    <string name="lblInsertPIN" translatable="false">Insert PIN:</string>
-    <string name="lblPassword" translatable="false">Pass:</string>
-    <string name="lblSSID" translatable="false">Network:</string>
-    <string name="mainNoNetworks">"There's no WiFi networks near"</string>
-    <string name="mainlayout_info">"Press 'Scan' to start scanning networks</string>
+    <string name="info_gps" >"Enable location services"</string>
+    <string name="invalidPIN" >Invalid PIN</string>
+    <string name="lblInsertPIN" >Insert PIN:</string>
+    <string name="lblPassword" >Pass:</string>
+    <string name="lblSSID" >Network:</string>
+    <string name="mainNoNetworks">"There are no nearby WiFi networks."</string>
+    <string name="mainlayout_info">"To begin scanning networks, click 'Scan.'</string>
     <string name="noInfoToClipBoard">Nothing to copy</string>
     <string name="noNetAvailable">No networks available</string>
-    <string name="noRootInfo" translatable="false">"Your device is not rooted.&lt;br/>&lt;br/>\"Try PIN (root)\" and \"Show passwords\" are only for rooted devices.&lt;br/>&lt;br/>If your device is not rooted, you only can scan AP's and see info about it.&lt;br/>&lt;br/>&lt;a href=https://www.google.com/search?q=root+%1$s&amp;gws_rd=ssl>How to root your %2$s&lt;/a>&lt;br/>&lt;br/>&lt;i>Be a great user! Be a superuser! Be root!&lt;/i>"</string>
+    <string name="noRootInfo" >"Your device is not rooted.&lt;br/>&lt;br/>\"Try PIN (root)\" and \"Show passwords\" are only for rooted devices.&lt;br/>&lt;br/>If your device is not rooted, you only can scan AP's and see info about it.&lt;br/>&lt;br/>&lt;a href=https://www.google.com/search?q=root+%1$s&amp;gws_rd=ssl>How to root your %2$s&lt;/a>&lt;br/>&lt;br/>&lt;i>Be a great user! Be a superuser! Be root!&lt;/i>"</string>
     <string name="noSSID">-- Hidden network --</string>
     <string name="noScan">"Please, press 'Scan' button to scan available networks.
 
 Be sure that WiFi is enabled."</string>
-    <string name="no_available" translatable="false">No available</string>
-    <string name="ok" translatable="false">OK</string>
-    <string name="request_gps_denied_info" translatable="false">"But… why?
+    <string name="no_available" >Not available</string>
+    <string name="ok" >OK</string>
+    <string name="request_gps_denied_info" >"But… why?
 
 Please, allow access to location (GPS) to scan networks."</string>
-    <string name="request_gps_info">"In Android 6.0 or upper it's necessary give location permissions to scan WiFi networks.
+    <string name="welcome_mes">"In Android 6.0 or upper it's necessary give location permissions to scan WiFi networks.
 
 "<a href="https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id">https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id</a></string>
     <string name="saveprocess" translatable="false">Saving…</string>

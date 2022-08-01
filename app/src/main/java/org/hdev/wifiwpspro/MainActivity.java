@@ -2,7 +2,6 @@ package org.hdev.wifiwpspro;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -15,7 +14,6 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.WpsCallback;
@@ -56,12 +54,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -70,11 +63,11 @@ import eu.chainfire.libsuperuser.Shell.SH;
 import eu.chainfire.libsuperuser.Shell.SU;
 
 public class MainActivity extends AppCompatActivity {
-    protected static boolean ScannAutomatique;
-    protected static boolean premierOnCreate = true;
-    protected static boolean locatParametreActivity = false;
+    protected static boolean scanauto;
+    protected static boolean firstversion = true;
+    protected static boolean locationactivity = false;
     protected static boolean controlReciever;
-    protected static boolean activatGPS = false;
+    protected static boolean activateGPS = false;
     protected static boolean shouldUserRoot = true;
     protected static WifiManager wff;
     protected final Context context = this;
@@ -83,20 +76,18 @@ public class MainActivity extends AppCompatActivity {
     protected String prompte;
     protected boolean firstBooot = true;
     protected Intent intent;
-    protected int derniereNet = 0;
+    protected int latestver = 0;
     protected ListView list;
     protected ArrayList<Networking> networkingList;
     protected String pinCode;
     protected WifiReceiver receptorWifi;
-    protected String selectedBSSID;
-    protected String selectedESSID;
-    protected String selectedPSK;
+    protected String BSSID;
+    protected String ESSID;
+    protected String PSK;
     protected boolean initialisationSYS = false;
     protected TextView noTextNet;
     protected String wpa_code_pin;
-    private AdView mAdView;
-    InterstitialAd mInterstitialAd;
-    AdRequest adRequestint;
+
 
     private static boolean isLocationEnabled(Context context) {
         int locationMode = 0;
@@ -113,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (premierOnCreate) {
+        if (firstversion) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 Window window = getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -165,26 +156,7 @@ public class MainActivity extends AppCompatActivity {
         return manufacturer.toUpperCase() + " " + model;
     }
 
-    public void shareApp() {
-        try {
-            Intent i = new Intent("android.intent.action.SEND");
-            i.putExtra("android.intent.extra.SUBJECT", getString(R.string.app_name));
-            i.putExtra("android.intent.extra.TEXT", "https://play.google.com/store/apps/details?id=" + getPackageName());
-            startActivity(Intent.createChooser(i, "Choose one"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void rateApp() {
-        Intent goToMarket = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=" + getPackageName()));
-        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        try {
-            startActivity(goToMarket);
-        } catch (ActivityNotFoundException e) {
-            startActivity(new Intent("android.intent.action.VIEW", Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
-        }
-    }
 
     private void showInfoAboutGPSBelowAndroidM() {
         if (this.firstBooot) {
@@ -199,10 +171,10 @@ public class MainActivity extends AppCompatActivity {
     private void showPermissionRequestInfo() {
         if (VERSION.SDK_INT < 23) {
             showInfoAboutGPSBelowAndroidM();
-            activatGPS = false;
+            activateGPS = false;
             return;
         }
-        activatGPS = true;
+        activateGPS = true;
         if (ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_COARSE_LOCATION") != 0  || ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_FINE_LOCATION") != 0 || ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_BACKGROUND_LOCATION") != 0) {
             Builder builder = new Builder(this);
             builder.setPositiveButton(R.string.ok, new OnClickListener() {
@@ -212,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             builder.setCancelable(false);
-            builder.setMessage(R.string.request_gps_info);
+            builder.setMessage(R.string.welcome_mes);
             AlertDialog dialog = builder.create();
             dialog.show();
             ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
@@ -263,8 +235,7 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.home_page2);
         settoolbar();
-        loadAds();
-        loadInterstitialAd();
+
         intent = new Intent().putExtra("List_Position", MODE_PRIVATE);
         wpa_code_pin = Extra.loadLib(context);
         networkingList = new ArrayList();
@@ -275,9 +246,9 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Networking networking = (Networking) list.getItemAtPosition(position);
-                if (derniereNet != position) {
+                if (latestver != position) {
                     intent.putExtra("List_Position", MODE_PRIVATE);
-                    derniereNet = position;
+                    latestver = position;
                 }
                 if (networking.getINFO().contains("WPS")) {
                     showNetworkOptionsDialog(networking);
@@ -290,17 +261,7 @@ public class MainActivity extends AppCompatActivity {
         configWiFiReceiver();
     }
 
-    private void loadInterstitialAd() {
-        adRequestint = new AdRequest.Builder().build();
-        mInterstitialAd = new InterstitialAd(getApplicationContext());
-        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial_full_screen));
-        mInterstitialAd.loadAd(adRequestint);
-    }
-    private void showInterstitial() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
-    }
+
 
     private void configWiFiReceiver() {
         wff = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -309,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.enablingWiFi, Toast.LENGTH_SHORT).show();
             wff.setWifiEnabled(true);
         }
-        ScannAutomatique = false;
+        scanauto = false;
         controlReciever = false;
         registerReceiver(receptorWifi, new IntentFilter("android.net.wifi.SCAN_RESULTS"));
     }
@@ -333,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void NetInfo(List<ScanResult> results) {
         int i = 0;
-        if (!ScannAutomatique) {
+        if (!scanauto) {
             controlReciever = false;
         }
         if (results != null) {
@@ -373,13 +334,6 @@ public class MainActivity extends AppCompatActivity {
         return (capabilities.contains("WPA2") || capabilities.contains("WPA") || capabilities.contains("WEP")) ? R.mipmap.ic_lock : R.mipmap.ic_lock_open;
     }
 
-    private void loadAds() {
-        //ADS
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-    }
-
     private int getWiFi(int rssi) {
         switch (WifiManager.calculateSignalLevel(rssi, 4)) {
             case 0:
@@ -414,12 +368,12 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_about) {
             showAbout();
         } else if (id == R.id.action_scan) {
-            if (!ScannAutomatique) {
+            if (!scanauto) {
                 if (!initialisationSYS) {
                     initialisationSYS = true;
                     loadSystem();
                 }
-                if (!activatGPS || isLocationEnabled(context)) {
+                if (!activateGPS || isLocationEnabled(context)) {
                     intent.putExtra("List_Position", MODE_PRIVATE);
                     showScan();
                 } else {
@@ -441,11 +395,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void showNetworkOptionsDialog(Networking networking) {
         Builder builder = new Builder(context);
-        selectedESSID = networking.getESSID();
-        selectedBSSID = networking.getBSSID();
+        ESSID = networking.getESSID();
+        BSSID = networking.getBSSID();
         String[] charSeq = Extra.calculePIN(networking);
         Log.d("Array List Values", String.valueOf(charSeq));
-        final String BSSID = selectedBSSID;
+        final String BSSID = this.BSSID;
         if (VERSION.SDK_INT >= 21) {
             View checkBoxView = View.inflate(this, R.layout.root_checker, null);
             final CheckBox checkBox = checkBoxView.findViewById(R.id.caseaCocher);
@@ -487,7 +441,6 @@ public class MainActivity extends AppCompatActivity {
                 pinCode = finalCharSeq[intent.getIntExtra("List_Position", 0)];
                 prompte = wpa_code_pin + " IFNAME=wlan0 wps_reg " + BSSID + " " + pinCode;
                 dialog.dismiss();
-                showInterstitial();
                 showChooseMethodDialog();
             }
         });
@@ -499,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showCustomPINDialog(final String BSSID) {
         Builder builder = new Builder(this.context);
-        this.selectedBSSID = BSSID;
+        this.BSSID = BSSID;
         final EditText custompin = new EditText(context);
         custompin.setInputType(InputType.TYPE_CLASS_NUMBER);
         custompin.setMaxLines(1);
@@ -518,7 +471,7 @@ public class MainActivity extends AppCompatActivity {
                 prompte = wpa_code_pin + " IFNAME=wlan0 wps_reg " + BSSID + " " + pinCode;
                 if (pinCode.length() != 8) {
                     Toast.makeText(context, getString(R.string.invalidPIN), Toast.LENGTH_SHORT).show();
-                    showCustomPINDialog(selectedBSSID);
+                    showCustomPINDialog(MainActivity.this.BSSID);
                     return;
                 }
                 dialog.dismiss();
@@ -532,14 +485,14 @@ public class MainActivity extends AppCompatActivity {
     protected void showChooseMethodDialog() {
         if (VERSION.SDK_INT < 21) {
             if (SU.available()) {
-                new CallSU(prompte, selectedBSSID).execute();
+                new CallSU(prompte, BSSID).execute();
             } else {
                 showNoRootDeviceDialog();
             }
         } else if (!shouldUserRoot) {
-            connectWithoutRoot(selectedBSSID, pinCode);
+            connectWithoutRoot(BSSID, pinCode);
         } else if (SU.available()) {
-            new CallSU(prompte, selectedBSSID).execute();
+            new CallSU(prompte, BSSID).execute();
         } else {
             showNoRootDeviceDialog();
         }
@@ -548,14 +501,14 @@ public class MainActivity extends AppCompatActivity {
     protected boolean findPSK() {
         List<String> result = Extra.parseSupplicant();
         boolean haveSSID = false;
-        selectedPSK = getString(R.string.no_available);
+        PSK = getString(R.string.no_available);
         for (String tmp : result) {
-            if (!haveSSID && tmp.substring(1).contains(selectedESSID)) {
+            if (!haveSSID && tmp.substring(1).contains(ESSID)) {
                 haveSSID = true;
             } else if (haveSSID && tmp.substring(0, 1).equalsIgnoreCase("s")) {
                 haveSSID = false;
             } else if (haveSSID && tmp.substring(0, 1).equalsIgnoreCase("p")) {
-                selectedPSK = tmp.substring(1);
+                PSK = tmp.substring(1);
                 return true;
             }
         }
@@ -577,7 +530,7 @@ public class MainActivity extends AppCompatActivity {
     private void showSuccessDialog() {
         Builder builder = new Builder(this);
         builder.setTitle(getResources().getString(R.string.connected));
-        builder.setMessage(getString(R.string.lblSSID) + " " + selectedESSID + "\n" + getString(R.string.lblPassword) + " " + selectedPSK + "\n\n" + getString(R.string.dialogSuccess));
+        builder.setMessage(getString(R.string.lblSSID) + " " + ESSID + "\n" + getString(R.string.lblPassword) + " " + PSK + "\n\n" + getString(R.string.dialogSuccess));
         builder.setNegativeButton(R.string.cancel, new OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -586,11 +539,11 @@ public class MainActivity extends AppCompatActivity {
         builder.setNeutralButton(R.string.copyClipBoard, new OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                if (selectedPSK.isEmpty()) {
+                if (PSK.isEmpty()) {
                     Toast.makeText(getApplicationContext(), R.string.noInfoToClipBoard, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                ((ClipboardManager) getSystemService(CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("", selectedPSK));
+                ((ClipboardManager) getSystemService(CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("", PSK));
                 Toast.makeText(getApplicationContext(), R.string.clipBoard, Toast.LENGTH_SHORT).show();
             }
         });
@@ -622,12 +575,12 @@ public class MainActivity extends AppCompatActivity {
         if (receptorWifi != null) {
             registerReceiver(receptorWifi, new IntentFilter("android.net.wifi.SCAN_RESULTS"));
         }
-        if (ScannAutomatique) {
+        if (scanauto) {
             wff.startScan();
         }
-        if (locatParametreActivity) {
+        if (locationactivity) {
             if (isLocationEnabled(context)) {
-                locatParametreActivity = false;
+                locationactivity = false;
                 showScan();
             } else {
                 buildAlertMessageNoGps();
@@ -647,7 +600,7 @@ public class MainActivity extends AppCompatActivity {
         new Builder(this).setMessage(R.string.dialog_need_active_gps_info).setCancelable(false).setPositiveButton((int) R.string.ok, new OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
-                locatParametreActivity = true;
+                locationactivity = true;
             }
         }).setNegativeButton(android.R.string.cancel, new OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -700,7 +653,7 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         public void run() {
                             NetworkInfo mWifi = cManager.getActiveNetworkInfo();
-                            if (mWifi != null && mWifi.getType() == 1 && mWifi.isConnected() && !MainActivity.wff.getConnectionInfo().getBSSID().equalsIgnoreCase(selectedBSSID)) {
+                            if (mWifi != null && mWifi.getType() == 1 && mWifi.isConnected() && !MainActivity.wff.getConnectionInfo().getBSSID().equalsIgnoreCase(MainActivity.this.BSSID)) {
                                 progressDialog.dismiss();
                                 showFailDialog();
                             }
@@ -822,7 +775,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void onReceive(Context c, Intent intent) {
-            if (ScannAutomatique || controlReciever) {
+            if (scanauto || controlReciever) {
                 NetInfo(wff.getScanResults());
             }
         }

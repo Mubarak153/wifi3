@@ -39,8 +39,6 @@ public class Generator extends AppCompatActivity implements AdapterView.OnItemSe
         categories.add("ZhaoChunsheng Algorithm");
         categories.add("Arcadyan Algorithm");
         categories.add("ArrisDG860A Algorithm");
-        categories.add("Dlink Algorithm");
-        categories.add("Dlinkplus1 Algorithm");
         categories.add("28bit Algorithm");
         categories.add("32bit Algorithm");
         textView.setTextIsSelectable(true);
@@ -74,12 +72,6 @@ public class Generator extends AppCompatActivity implements AdapterView.OnItemSe
                         case 4:
                             textView.setText(charSeqence[4]);
                             break;
-                        case 5:
-                            textView.setText(charSeqence[5]);
-                            break;
-                        case 6:
-                            textView.setText(charSeqence[6]);
-                            break;
                             default:
                                 break;
                     }
@@ -108,10 +100,6 @@ public class Generator extends AppCompatActivity implements AdapterView.OnItemSe
                 case 3:
                     textView.setText("");
                 case 4:
-                    textView.setText("");
-                case 5:
-                    textView.setText("");
-                case 6:
                     textView.setText("");
             }
         }catch (Exception e){

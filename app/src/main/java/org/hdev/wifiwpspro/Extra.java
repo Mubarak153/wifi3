@@ -153,24 +153,6 @@ public class Extra {
         return Long.parseLong(splitBSSID[0] + splitBSSID[1] + splitBSSID[2] + splitBSSID[3] + splitBSSID[4] + splitBSSID[5], 16);
     }
 
-    private static int dlink(String bssid) {
-        int mac = ((int) (completeBSSID(bssid) & 16777215)) ^ 5614165;
-        mac = (mac ^ ((((((mac & 15) << 4) | ((mac & 15) << 8)) | ((mac & 15) << 12)) | ((mac & 15) << 16)) | ((mac & 15) << 20))) % 10000000;
-        if (mac < 1000000) {
-            mac += ((mac % 9) * 1000000) + 1000000;
-        }
-        return (mac * 10) + wpsChecksum(mac);
-    }
-
-    private static int dlinkplus1(String bssid) {
-        int mac = ((int) ((completeBSSID(bssid) + 1) & 16777215)) ^ 5614165;
-        mac = (mac ^ ((((((mac & 15) << 4) | ((mac & 15) << 8)) | ((mac & 15) << 12)) | ((mac & 15) << 16)) | ((mac & 15) << 20))) % 10000000;
-        if (mac < 1000000) {
-            mac += ((mac % 9) * 1000000) + 1000000;
-        }
-        return (mac * 10) + wpsChecksum(mac);
-    }
-
     static String extra_zeros(int pin) {
         String PIN1_zeros = String.valueOf(pin);
         if (PIN1_zeros.length() == 7) {
@@ -201,29 +183,25 @@ public class Extra {
 
 
     public static String[] calculePIN(Networking networking) {
-        String[] ret = new String[7];
+        String[] ret = new String[5];
 
         ret[0] = String.valueOf(ZhaoChunshengAlgorithm(networking.getBSSID()));
         ret[1] = String.valueOf(ArcadyanAlgorithm(networking.getBSSID()));
         ret[2] = String.valueOf(ArrisDG860AAlgorithm(networking.getBSSID()));
-        ret[3] = String.valueOf(dlink(networking.getBSSID()));
-        ret[4] = String.valueOf(dlinkplus1(networking.getBSSID()));
-        ret[5] = String.valueOf(pin28bit(networking.getBSSID()));
-        ret[6] = String.valueOf(pin32bit(networking.getBSSID()));
+        ret[3] = String.valueOf(pin28bit(networking.getBSSID()));
+        ret[4] = String.valueOf(pin32bit(networking.getBSSID()));
 
         return ret;
     }
 
     public static String[] calculePINNew(String net) {
-        String[] ret = new String[7];
+        String[] ret = new String[5];
 
         ret[0] = String.valueOf(ZhaoChunshengAlgorithm(net));
         ret[1] = String.valueOf(ArcadyanAlgorithm(net));
         ret[2] = String.valueOf(ArrisDG860AAlgorithm(net));
-        ret[3] = String.valueOf(dlink(net));
-        ret[4] = String.valueOf(dlinkplus1(net));
-        ret[5] = String.valueOf(pin28bit(net));
-        ret[6] = String.valueOf(pin32bit(net));
+        ret[3] = String.valueOf(pin28bit(net));
+        ret[4] = String.valueOf(pin32bit(net));
 
         return ret;
     }

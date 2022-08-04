@@ -41,8 +41,8 @@ public class Generator extends AppCompatActivity implements AdapterView.OnItemSe
         categories.add("ArrisDG860A Algorithm");
         categories.add("Dlink Algorithm");
         categories.add("Dlinkplus1 Algorithm");
-        categories.add("Asus Algorithm");
-        categories.add("airocon Algorithm");
+        categories.add("28bit Algorithm");
+        categories.add("32bit Algorithm");
         textView.setTextIsSelectable(true);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);

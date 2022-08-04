@@ -53,20 +53,6 @@ public class Extra {
         return (PIN * 10) + wpsChecksum(PIN);
     }
 
-    public static int mac2pin_airocon(String newmac) {
-        String mac = newmac.replace(":","");
-        int b0_int = Integer.parseInt(mac.substring(0, 2), 16);
-        int b1_int = Integer.parseInt(mac.substring(2, 4), 16);
-        int b2_int = Integer.parseInt(mac.substring(4, 6), 16);
-        int b3_int = Integer.parseInt(mac.substring(6, 8), 16);
-        int b4_int = Integer.parseInt(mac.substring(8, 10), 16);
-        int b5_int = Integer.parseInt(mac.substring(10, mac.length()), 16);
-        int pin_int = Integer.valueOf(new StringBuilder(String.valueOf(String.valueOf((b0_int + b1_int) % 10))).append(String.valueOf((b1_int + b2_int) % 10)).append(String.valueOf((b2_int + b3_int) % 10)).append(String.valueOf((b3_int + b4_int) % 10)).append(String.valueOf((b4_int + b5_int) % 10)).append(String.valueOf((b5_int + b0_int) % 10)).append(String.valueOf((b0_int + b1_int) % 10)).toString());
-        return Integer.valueOf((String.valueOf(pin_int) + String.valueOf(wpsChecksum(pin_int))));
-    }
-
-
-
     @SuppressLint("DefaultLocale")
     private static int ArcadyanAlgorithm(String bssid) {
         int mac = Integer.parseInt(bssid.replaceAll(":", "").substring(8, 12), 16);
@@ -152,12 +138,6 @@ public class Extra {
         return accum;
     }
 
-
-    private static int pin24bit(String bssid) {
-        int pin = (fragmentBSSID(bssid) & ViewCompat.MEASURED_SIZE_MASK) % 10000000;
-        return (pin * 10) + wpsChecksum(pin);
-    }
-
     private static int pin28bit(String bssid) {
         int pin = (int) ((completeBSSID(bssid) & 268435455) % 10000000);
         return (pin * 10) + wpsChecksum(pin);
@@ -189,25 +169,6 @@ public class Extra {
             mac += ((mac % 9) * 1000000) + 1000000;
         }
         return (mac * 10) + wpsChecksum(mac);
-    }
-
-    public static int mac2pin_asus(String newmac) {
-        String mac = newmac.replace(":","");
-        String b0 = mac.substring(0, 2);
-        String b1 = mac.substring(2, 4);
-        String b2 = mac.substring(4, 6);
-        String b3 = mac.substring(6, 8);
-        String b4 = mac.substring(8, 10);
-        String b5 = mac.substring(10, mac.length());
-        int b0_int = Integer.parseInt(b0, 16);
-        int b1_int = Integer.parseInt(b1, 16);
-        int b2_int = Integer.parseInt(b2, 16);
-        int b3_int = Integer.parseInt(b3, 16);
-        int b4_int = Integer.parseInt(b4, 16);
-        int b5_int = Integer.parseInt(b5, 16);
-        int sum_b = (((b1_int + b2_int) + b3_int) + b4_int) + b5_int;
-        int pin_int = Integer.valueOf(new StringBuilder(String.valueOf(String.valueOf((b0_int + b5_int) % (10 - ((sum_b) % 7))))).append(String.valueOf((b1_int + b5_int) % (10 - ((sum_b + 1) % 7)))).append(String.valueOf((b2_int + b5_int) % (10 - ((sum_b + 2) % 7)))).append(String.valueOf((b3_int + b5_int) % (10 - ((sum_b + 3) % 7)))).append(String.valueOf((b4_int + b5_int) % (10 - ((sum_b + 4) % 7)))).append(String.valueOf((b5_int + b5_int) % (10 - ((sum_b + 5) % 7)))).append(String.valueOf((b0_int + b5_int) % (10 - ((sum_b + 6) % 7)))).toString());
-        return Integer.valueOf((String.valueOf(pin_int) + String.valueOf(wpsChecksum(pin_int))));
     }
 
     static String extra_zeros(int pin) {
@@ -247,10 +208,8 @@ public class Extra {
         ret[2] = String.valueOf(ArrisDG860AAlgorithm(networking.getBSSID()));
         ret[3] = String.valueOf(dlink(networking.getBSSID()));
         ret[4] = String.valueOf(dlinkplus1(networking.getBSSID()));
-//        ret[5] = String.valueOf(pin28bit(net.getBSSID()));
-//        ret[6] = String.valueOf(pin32bit(net.getBSSID()));
-        ret[5] = String.valueOf(extra_zeros(mac2pin_asus(networking.getBSSID())));
-        ret[6] = String.valueOf(extra_zeros(mac2pin_airocon(networking.getBSSID())));
+        ret[5] = String.valueOf(pin28bit(networking.getBSSID()));
+        ret[6] = String.valueOf(pin32bit(networking.getBSSID()));
 
         return ret;
     }
@@ -263,10 +222,8 @@ public class Extra {
         ret[2] = String.valueOf(ArrisDG860AAlgorithm(net));
         ret[3] = String.valueOf(dlink(net));
         ret[4] = String.valueOf(dlinkplus1(net));
-//        ret[5] = String.valueOf(pin28bit(net.getBSSID()));
-//        ret[6] = String.valueOf(pin32bit(net.getBSSID()));
-        ret[5] = String.valueOf(extra_zeros(mac2pin_asus(net)));
-        ret[6] = String.valueOf(extra_zeros(mac2pin_airocon(net)));
+        ret[5] = String.valueOf(pin28bit(net));
+        ret[6] = String.valueOf(pin32bit(net));
 
         return ret;
     }

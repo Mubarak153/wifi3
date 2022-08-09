@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Environment;
-import androidx.core.view.ViewCompat;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -35,11 +35,6 @@ public class Extra {
             return "[OPEN]";
         }
         return capabilities;
-    }
-
-    private static int fragmentBSSID(String bssid) {
-        String[] splitBSSID = bssid.split(":");
-        return Integer.valueOf(splitBSSID[0] + splitBSSID[1] + splitBSSID[2], 16);
     }
 
     private static int secondFragmentBSSID(String bssid) {
@@ -152,34 +147,6 @@ public class Extra {
         String[] splitBSSID = bssid.split(":");
         return Long.parseLong(splitBSSID[0] + splitBSSID[1] + splitBSSID[2] + splitBSSID[3] + splitBSSID[4] + splitBSSID[5], 16);
     }
-
-    static String extra_zeros(int pin) {
-        String PIN1_zeros = String.valueOf(pin);
-        if (PIN1_zeros.length() == 7) {
-            PIN1_zeros = "0" + PIN1_zeros;
-        }
-        if (PIN1_zeros.length() == 6) {
-            PIN1_zeros = "00" + PIN1_zeros;
-        }
-        if (PIN1_zeros.length() == 5) {
-            PIN1_zeros = "000" + PIN1_zeros;
-        }
-        if (PIN1_zeros.length() == 4) {
-            PIN1_zeros = "0000" + PIN1_zeros;
-        }
-        if (PIN1_zeros.length() == 3) {
-            PIN1_zeros = "00000" + PIN1_zeros;
-        }
-        if (PIN1_zeros.length() == 2) {
-            PIN1_zeros = "000000" + PIN1_zeros;
-        }
-        if (PIN1_zeros.length() == 1) {
-            return "0000000" + PIN1_zeros;
-        }
-        return PIN1_zeros;
-    }
-
-
 
 
     public static String[] calculePIN(Networking networking) {

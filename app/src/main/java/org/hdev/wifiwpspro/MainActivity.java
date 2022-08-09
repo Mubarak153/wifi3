@@ -147,16 +147,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
     }
 
-    private String getDeviceName() {
-        String manufacturer = Build.MANUFACTURER;
-        String model = Build.MODEL;
-        if (model.startsWith(manufacturer)) {
-            return model.toUpperCase();
-        }
-        return manufacturer.toUpperCase() + " " + model;
-    }
-
-
 
     private void showInfoAboutGPSBelowAndroidM() {
         if (this.firstBooot) {

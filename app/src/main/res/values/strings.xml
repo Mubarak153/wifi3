@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Android WIFI Scanner</string>
-    <string name="aboutMsg">No networks available</string>
+    <string name="about_message">No networks available</string>
     <string name="about_description">"This tool helps you connect to any network that has WPS enabled with a generated pin. It's for testing your own network only.</string>
     <string name="action_about">About us</string>
     <string name="action_backupPass">Backup</string>
@@ -8,7 +8,7 @@
     <string name="action_scan">Scan</string>
     <string name="action_scanAuto">Automatic</string>
     <string name="action_scanManual">Manual</string>
-    <string name="action_showpwd">Show password</string>
+    <string name="action_showPass">Show password</string>
     <string name="alertDialog_trycustompin">Other pin</string>
     <string name="generate0">Generate Pin</string>
     <string name="alertDialog_trypin">Try</string>
@@ -28,8 +28,8 @@
     <string name="dialog_backupPass">Do you want to save a backup of your stored passwords?</string>
     <string name="dialog_gps_cancel">Remember to enable GPS location to start scanning WiFI networks!</string>
     <string name="dialog_need_active_gps_info">"Remember, if you're in Android 6.0+, you need to activate GPS."</string>
-    <string name="enableWiFi">Enable WIFI</string>
-    <string name="enablingWiFi">Enabling WIFI…</string>
+    <string name="enableWIFI">Enable WIFI</string>
+    <string name="enablingWIFI">Enabling WIFI…</string>
     <string name="failDialogMsg"><b>Congratulations! Your network is secure!</b>"
 
 If you used the incorrect pin, try:

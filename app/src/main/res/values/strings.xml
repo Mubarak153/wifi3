@@ -1,19 +1,19 @@
 <resources>
-    <string name="app_name" >Android WIFI/GPS</string>
+    <string name="app_name">Android WIFI Scanner</string>
     <string name="aboutMsg">No networks available</string>
-    <string name="about_description">"This Tool Help You Connect To any Network that have wps enabled with pin. It's Only For testing your own network only. App developed with educational purposes. We're not responsible for any misuse.</string>
+    <string name="about_description">"This tool helps you connect to any network that has WPS enabled with a generated pin. It's for testing your own network only.</string>
     <string name="action_about">About us</string>
-    <string name="action_backupPass" >Backup</string>
-    <string name="action_infoPass" translatable="false">Information</string>
-    <string name="action_scan" translatable="false">Scan</string>
-    <string name="action_scanAuto" translatable="false">Automatic</string>
-    <string name="action_scanManual" translatable="false">Manual</string>
+    <string name="action_backupPass">Backup</string>
+    <string name="action_infoPass">Information</string>
+    <string name="action_scan">Scan</string>
+    <string name="action_scanAuto">Automatic</string>
+    <string name="action_scanManual">Manual</string>
     <string name="action_showpwd">Show password</string>
-    <string name="alertDialog_trycustompin" translatable="false">Other pin</string>
-    <string name="generate0" translatable="false">Generate Pin</string>
+    <string name="alertDialog_trycustompin">Other pin</string>
+    <string name="generate0">Generate Pin</string>
     <string name="alertDialog_trypin">Try</string>
-    <string name="app_descrip">Connect to WiFi using a WPS PIN. This option is only available on 4.1.2.</string>
-    <string name="askWritePermission">To be able to write in the external memory, you need to allow the write permission.</string>
+    <string name="app_descrip">Connect to WIFI using a WPS pin.</string>
+    <string name="askWritePermission">To be able to write in the external memory, you need to allow permission.</string>
     <string name="backupFail">There is a problem. Backup not saved!</string>
     <string name="backupNoRoot">Only available for root users</string>
     <string name="backupSuccess">Backup done!</string>
@@ -24,48 +24,48 @@
     <string name="clipBoard">Copied to clipboard</string>
     <string name="connected">Connected!</string>
     <string name="copyClipBoard">Copy</string>
-    <string name="dialogSuccess">It May be Possible that you Already have the Password. Disable it and Connect Again!</string>
+    <string name="dialogSuccess">It may be possible that you already have the Password. Disable it and try again!</string>
     <string name="dialog_backupPass">Do you want to save a backup of your stored passwords?</string>
     <string name="dialog_gps_cancel">Remember to enable GPS location to start scanning WiFI networks!</string>
     <string name="dialog_need_active_gps_info">"Remember, if you're in Android 6.0+, you need to activate GPS."</string>
-    <string name="enableWiFi">Enable WiFi</string>
-    <string name="enablingWiFi">Enabling WiFi…</string>
-    <string name="failDialogMsg" translatable="false"><b>Congratulation! Your network is secure!</b>"
+    <string name="enableWiFi">Enable WIFI</string>
+    <string name="enablingWiFi">Enabling WIFI…</string>
+    <string name="failDialogMsg"><b>Congratulations! Your network is secure!</b>"
 
-BUT, if you not used the correct pin, try:
+If you used the incorrect pin, try:
 
 "<b>1.</b>" Reduce distance from AP.
-"<b>2.</b>" Try other PIN
+"<b>2.</b>" Try different PIN
 "<b>3.</b>" Maybe AP has MAC filter.
 "<b>4.</b>" Maybe the router has a timeout, try again later.
 </string>
-    <string name="info_gps" >"Enable location services"</string>
-    <string name="invalidPIN" >Invalid PIN</string>
-    <string name="lblInsertPIN" >Insert PIN:</string>
-    <string name="lblPassword" >Pass:</string>
-    <string name="lblSSID" >Network:</string>
-    <string name="mainNoNetworks">"There are no nearby WiFi networks."</string>
+    <string name="info_gps">"Enable location services"</string>
+    <string name="invalidPIN">Invalid PIN</string>
+    <string name="lblInsertPIN">Insert PIN:</string>
+    <string name="lblPassword">Password:</string>
+    <string name="lblSSID">Network:</string>
+    <string name="mainNoNetworks">"There are no nearby WIFI networks."</string>
     <string name="mainlayout_info">"To begin scanning networks, click 'Scan.'</string>
     <string name="noInfoToClipBoard">Nothing to copy</string>
     <string name="noNetAvailable">No networks available</string>
-    <string name="noRootInfo" >"Your device is not rooted.&lt;br/>&lt;br/>\"Try PIN (root)\" and \"Show passwords\" are only for rooted devices.&lt;br/>&lt;br/>If your device is not rooted, you only can scan AP's and see info about it.&lt;br/>&lt;br/>&lt;a href=https://www.google.com/search?q=root+%1$s&amp;gws_rd=ssl>How to root your %2$s&lt;/a>&lt;br/>&lt;br/>&lt;i>Be a great user! Be a superuser! Be root!&lt;/i>"</string>
+    <string name="noRootInfo" >"Your device is not rooted.&lt;br/>&lt;br/>\"Try PIN (root)\" and \"Show passwords\" are only for rooted devices.&lt;br/>&lt;br/>If your device is not rooted, you only can scan AP's and see info about it.&lt;br/>&lt;br/>&lt;a href=https://www.google.com/search?q=root+%1$s&amp;gws_rd=ssl>How to root your %2$s&lt;/a>&lt;br/>&lt;br/>&lt;i>Become a root user!&lt;/i>"</string>
     <string name="noSSID">-- Hidden network --</string>
-    <string name="noScan">"Please, press 'Scan' button to scan available networks.
+    <string name="noScan">"Please, press the 'Scan' button to scan available networks.
 
-Be sure that WiFi is enabled."</string>
+Make sure that WIFI is enabled."</string>
     <string name="no_available" >Not available</string>
     <string name="ok" >OK</string>
     <string name="request_gps_denied_info" >"But… why?
 
 Please, allow access to location (GPS) to scan networks."</string>
-    <string name="welcome_mes">"In Android 6.0 or upper it's necessary give location permissions to scan WiFi networks.
+    <string name="welcome_mes">"In Android 6.0 or higher it's necessary give location permissions to scan WIFI networks.
 
 "<a href="https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id">https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id</a></string>
     <string name="saveprocess" translatable="false">Saving…</string>
     <string name="scanning" translatable="false">Scanning…</string>
     <string name="title_activity_about" translatable="false">About us</string>
     <string name="title_activity_password" translatable="false">Passwords</string>
-    <string name="tryConnection">"We are Trying to Connect. Be Patient!
+    <string name="tryConnection">"We are trying to connect.
 
 We hope that it's your Network! Seek Permission before testing"</string>
     <string name="useRootMethod">Use root method</string>

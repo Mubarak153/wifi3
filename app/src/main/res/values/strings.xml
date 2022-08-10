@@ -61,7 +61,7 @@ Please, allow access to location (GPS) to scan networks."</string>
     <string name="welcome_mes">""Welcome to Android GPS/Wifi.
 
 To scan WiFi networks using Android 6.0 or above, you must provide location permissions</string>
-    <string name="saveprocess" translatable="false">Saving…</string>
+    <string name="saveprocess" >Saving…</string>
     <string name="scanning">Scanning…</string>
     <string name="title_activity_about">About us</string>
     <string name="title_activity_password">Passwords</string>

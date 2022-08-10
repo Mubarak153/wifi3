@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="org.hdev.wifiwpspro">
 
     <uses-feature android:name="android.hardware.wifi" />
@@ -19,7 +18,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="org.hdev.wifiwpspro.MainActivity">
+        <activity android:name="com.w.wifiscanner.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,9 +26,9 @@
             </intent-filter>
         </activity>
     <activity
-            android:name="org.hdev.wifiwpspro.Map"
+            android:name="com.w.wifiscanner.Map"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="org.hdev.wifiwpspro.Generator" />
+        <activity android:name="com.w.wifiscanner.Generator" />
     </application>
 
 </manifest>

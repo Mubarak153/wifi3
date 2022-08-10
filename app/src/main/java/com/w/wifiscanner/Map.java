@@ -1,4 +1,4 @@
-package org.hdev.wifiwpspro;
+package com.w.wifiscanner;
 
 import android.os.Build;
 import android.os.Bundle;

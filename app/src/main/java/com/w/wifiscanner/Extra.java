@@ -1,10 +1,12 @@
-package org.hdev.wifiwpspro;
+package com.w.wifiscanner;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Environment;
 
+
+import org.hdev.wifiwpspro.R;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

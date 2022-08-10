@@ -1,4 +1,4 @@
-package org.hdev.wifiwpspro;
+package com.w.wifiscanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.phearme.macaddressedittext.MacAddressEditText;
+
+import org.hdev.wifiwpspro.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

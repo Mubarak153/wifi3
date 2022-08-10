@@ -1,4 +1,4 @@
-package org.hdev.wifiwpspro;
+package com.w.wifiscanner;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package org.hdev.wifiwpspro;
+package com.w.wifiscanner;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.hdev.wifiwpspro.R;
 
 import java.util.ArrayList;
 

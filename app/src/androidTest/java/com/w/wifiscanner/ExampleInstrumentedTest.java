@@ -1,4 +1,4 @@
-package org.hdev.wifiwpspro;
+package com.w.wifiscanner;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry ;

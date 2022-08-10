@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.hdev.wifiwpspro.Generator">
+    tools:context="com.w.wifiscanner.Generator">
 
     <com.phearme.macaddressedittext.MacAddressEditText
         android:id="@+id/editeur_text"

@@ -1,4 +1,4 @@
-package org.hdev.wifiwpspro;
+package com.w.wifiscanner;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
@@ -55,6 +55,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+
+import org.hdev.wifiwpspro.R;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

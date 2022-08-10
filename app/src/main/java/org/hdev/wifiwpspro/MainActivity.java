@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
         wff = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         receptorWifi = new WifiReceiver();
         if (!wff.isWifiEnabled()) {
-            Toast.makeText(this, R.string.enablingWiFi, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enablingWIFI, Toast.LENGTH_SHORT).show();
             wff.setWifiEnabled(true);
         }
         scanauto = false;
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
             configWiFiReceiver();
         }
         if (!wff.isWifiEnabled()) {
-            Toast.makeText(this, R.string.enablingWiFi, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enablingWIFI, Toast.LENGTH_SHORT).show();
             wff.setWifiEnabled(true);
         }
         controlReciever = true;
@@ -608,7 +608,7 @@ public class MainActivity extends AppCompatActivity {
                 wff = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             }
             if (!wff.isWifiEnabled()) {
-                Toast.makeText(this, R.string.enablingWiFi, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.enablingWIFI, Toast.LENGTH_SHORT).show();
                 wff.setWifiEnabled(true);
             }
             final ConnectivityManager cManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
@@ -726,7 +726,7 @@ public class MainActivity extends AppCompatActivity {
                 wff = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             }
             if (!wff.isWifiEnabled()) {
-                Toast.makeText(MainActivity.this, getString(R.string.enablingWiFi), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, getString(R.string.enablingWIFI), Toast.LENGTH_SHORT).show();
                 wff.setWifiEnabled(true);
             }
             pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);

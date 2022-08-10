@@ -3,19 +3,19 @@ package org.hdev.wifiwpspro;
 
 
 public class Password {
-    private final String nom_reseau;
-    private final String mo_depasse_net;
+    private final String SSID;
+    private final String outrun;
 
-    public Password(String nom_reseau, String mo_depasse_net) {
-        this.nom_reseau = nom_reseau;
-        this.mo_depasse_net = mo_depasse_net;
+    public Password(String SSID, String outrun) {
+        this.SSID = SSID;
+        this.outrun = outrun;
     }
 
-    public String getNom_reseau() {
-        return this.nom_reseau;
+    public String getSSID() {
+        return this.SSID;
     }
 
-    public String getMo_depasse_net() {
-        return this.mo_depasse_net;
+    public String getOutrun() {
+        return this.outrun;
     }
 }

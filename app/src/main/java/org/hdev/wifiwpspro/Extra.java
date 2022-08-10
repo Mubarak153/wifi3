@@ -254,8 +254,8 @@ public class Extra {
         Iterator it = pwdList.iterator();
         while (it.hasNext()) {
             Password pwd = (Password) it.next();
-            out.println(SSID + " " + pwd.getNom_reseau());
-            out.println(PASS + " " + pwd.getMo_depasse_net());
+            out.println(SSID + " " + pwd.getSSID());
+            out.println(PASS + " " + pwd.getOutrun());
             out.println("---------------------------------------");
         }
         out.close();

@@ -25,10 +25,10 @@ public class Password_2 extends ArrayAdapter {
     @SuppressLint("ViewHolder")
     public View getView(int position, View convertView, ViewGroup parent) {
         View item = context.getLayoutInflater().inflate(R.layout.password_list, null);
-        ((TextView) item.findViewById(R.id.NetworkName)).setText(( pwdList.get(position)).getNom_reseau());
+        ((TextView) item.findViewById(R.id.NetworkName)).setText(( pwdList.get(position)).getSSID());
         TextView lblPWD = item.findViewById(R.id.LblNetworkPassword);
         lblPWD.setTypeface(typeface);
-        lblPWD.setText((pwdList.get(position)).getMo_depasse_net());
+        lblPWD.setText((pwdList.get(position)).getOutrun());
         return item;
     }
 }

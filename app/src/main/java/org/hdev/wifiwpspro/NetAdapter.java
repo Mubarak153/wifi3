@@ -36,14 +36,14 @@ public class NetAdapter extends ArrayAdapter {
         if ((networkingList.get(position)).getINFO().contains("WPS")) {
 //            lblESSID.setTextColor(ContextCompat.getColor(context, R.color.color_green_new));
             wpsEnabled.setText(context.getString(R.string.wps_enabled)+" Yes");
-            item.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.color_green));
-            wifiSignal.setColorFilter(ContextCompat.getColor(context, R.color.color_green_new), android.graphics.PorterDuff.Mode.SRC_IN);
+            item.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colour_green));
+            wifiSignal.setColorFilter(ContextCompat.getColor(context, R.color.colour_green_new), android.graphics.PorterDuff.Mode.SRC_IN);
 
         } else {
 //            lblESSID.setTextColor(ContextCompat.getColor(context, R.color.color_red_new));
             wpsEnabled.setText(context.getString(R.string.wps_enabled)+" No");
-            item.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.color_red));
-            wifiSignal.setColorFilter(ContextCompat.getColor(context, R.color.color_red_new), android.graphics.PorterDuff.Mode.SRC_IN);
+            item.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colour_red));
+            wifiSignal.setColorFilter(ContextCompat.getColor(context, R.color.colour_red_new), android.graphics.PorterDuff.Mode.SRC_IN);
 
         }
         if(Extra.capabilitiesTypeResume((networkingList.get(position)).getINFO()).contains("WPA") ||
@@ -59,7 +59,7 @@ public class NetAdapter extends ArrayAdapter {
         }
         bssid.setText(context.getString(R.string.mac_name)+" "+(networkingList.get(position)).getBSSID());
         ((TextView) item.findViewById(R.id.signal)).setText((networkingList.get(position)).getSIGNAL()+" "+context.getString(R.string.dbm));
-        ((ImageView) item.findViewById(R.id.fermer_icon)).setImageResource((networkingList.get(position)).getLOCK());
+        ((ImageView) item.findViewById(R.id.lock_icon)).setImageResource((networkingList.get(position)).getLOCK());
         wifiSignal.setImageResource((networkingList.get(position)).getWiFiSignalIMG());
         return item;
     }

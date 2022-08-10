@@ -31,8 +31,7 @@ public class Map extends AppCompatActivity {
                 .setImage(R.mipmap.ic_launcher)
                 .setDescription(getString(R.string.about_description))
                 .addGroup("Connect with us")
-                .addEmail(getString(R.string.email))
-                .addWebsite(getString(R.string.add_web))
+
                 .addPlayStore(getPackageName())
                 .create();
         setContentView(aboutPage);
